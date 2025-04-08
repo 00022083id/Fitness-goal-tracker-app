@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Fitness Goals
+  a(href='/') Home
+  a(href='/goals/new') Add New Goal
+  ul
+    each goal in goals
+      li
+        a(href=`/goals/${goal.id}`)= goal.title + ' - ' + goal.description

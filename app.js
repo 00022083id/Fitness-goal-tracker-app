@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const indexRouter = require('./routes/index');
-const goalsRouter = require('./routes/goals');
+const indexRouter = require('./routes/index.js');
+const goalsRouter = require('./routes/goals/index.js');
 
 const app = express();
 

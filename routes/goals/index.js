@@ -1,20 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
-
-const goalsController = require('../../controllers/goals');
+const goalsController = require('../../controllers/goals/index');
 
 router.get('/', goalsController.listGoals);
 
 router.get('/new', goalsController.newGoalForm);
 
-router.post('/new', 
-  [
-    body('title').notEmpty().withMessage('Title is required'),
-    body('description').notEmpty().withMessage('Description is required')
-  ],
-  goalsController.createGoal
-);
+router.post('/', [
+  body('title').notEmpty().withMessage('Title is required'),
+  body('description').notEmpty().withMessage('Description is required')
+], goalsController.createGoal);
 
 router.get('/:id', goalsController.getGoal);
 

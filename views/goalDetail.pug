@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= goal.title
+  p Description: #{goal.description}
+  if goal.target
+    p Target: #{goal.target}
+  if goal.progress
+    p Progress: #{goal.progress}
+  a(href=`/goals/${goal.id}/edit`) Edit
+  form(action=`/goals/${goal.id}/delete`, method='POST', style='display:inline')
+    button(type='submit') Delete
+  br
+  a(href='/goals') Back to Goals List

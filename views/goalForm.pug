@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  if goal.id
+    h1 Edit Fitness Goal
+    form(action=`/goals/${goal.id}/edit`, method='POST')
+      label(for='title') Title:
+      input(type='text', name='title', id='title', value=goal.title || '')
+      br
+      label(for='description') Description:
+      input(type='text', name='description', id='description', value=goal.description || '')
+      br
+      label(for='target') Target (e.g., weight loss, running distance):
+      input(type='text', name='target', id='target', value=goal.target || '')
+      br
+      label(for='progress') Progress:
+      input(type='text', name='progress', id='progress', value=goal.progress || '')
+      br
+      if errors
+        ul
+          each error in errors
+            li= error.msg
+      button(type='submit') Submit
+  else
+    h1 Add New Fitness Goal
+    form(action='/goals', method='POST')
+      label(for='title') Title:
+      input(type='text', name='title', id='title', value=goal.title || '')
+      br
+      label(for='description') Description:
+      input(type='text', name='description', id='description', value=goal.description || '')
+      br
+      label(for='target') Target (e.g., weight loss, running distance):
+      input(type='text', name='target', id='target', value=goal.target || '')
+      br
+      label(for='progress') Progress:
+      input(type='text', name='progress', id='progress', value=goal.progress || '')
+      br
+      if errors
+        ul
+          each error in errors
+            li= error.msg
+      div
+      button(type='submit') Submit
